@@ -29,7 +29,9 @@ body {
   padding: 0 20px 20px 20px;
   font-family: "Marvel", sans-serif;
   background: linear-gradient(to bottom, #ed213a, #93291e);
-  height: 100vh;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 nav {
   justify-content: center !important;
