@@ -40,7 +40,7 @@ export default {
         { value: "title", description: "A-Z" },
         { value: "-title", description: "Z-A" },
       ],
-      showNextButton: true,
+      showNextButton: false,
       carouselSettings: {
         arrows: true,
         rows: 1,

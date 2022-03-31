@@ -30,7 +30,7 @@ export default {
   margin: 20px 0px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 .page-buttons {
   display: flex;

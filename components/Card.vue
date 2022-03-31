@@ -23,16 +23,13 @@ export default {
   transition: transform 0.5s;
 }
 
-@media screen {
-}
-
 .card img {
   object-position: center;
   object-fit: fill;
   height: 200px;
 }
 .comic img {
-  height: 320px !important;
+  height: 300px;
 }
 
 .card:hover {
@@ -48,5 +45,40 @@ export default {
 
 .card-body {
   padding: 0.5rem;
+}
+
+@media (min-width: 0px) {
+  .card {
+    flex: 0 1 99%;
+  }
+}
+@media (min-width: 400px) {
+  .card {
+    flex: 0 1 41%;
+  }
+  .comic img {
+    height: 240px;
+  }
+}
+@media (min-width: 768px) {
+  .card {
+    flex: 0 1 28%;
+  }
+  .comic img {
+    height: 240px;
+  }
+}
+@media (min-width: 1000px) {
+  .card {
+    flex: 0 1 21%;
+  }
+}
+@media (min-width: 1200px) {
+  .card {
+    flex: 0 1 21%;
+  }
+  .comic img {
+    height: 300px;
+  }
 }
 </style>

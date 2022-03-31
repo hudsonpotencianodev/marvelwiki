@@ -1,12 +1,14 @@
 <template>
   <div class="searchbar">
-    <input type="text" title="Search" placeholder="Search" v-model="search" />
-    <select title="Sort By" v-model="sort">
-      <option v-for="sort in sortList" :key="sort.value" :value="sort.value">
-        {{ sort.description }}
-      </option>
-    </select>
-    <button @click="searchClick">Search</button>
+    <form @submit.prevent="searchClick">
+      <input type="text" title="Search" placeholder="Search" v-model="search" />
+      <select title="Sort By" v-model="sort">
+        <option v-for="sort in sortList" :key="sort.value" :value="sort.value">
+          {{ sort.description }}
+        </option>
+      </select>
+      <button @click="searchClick">Search</button>
+    </form>
   </div>
 </template>
 
@@ -32,7 +34,7 @@ export default {
 </script>
 
 <style scoped>
-.searchbar {
+.searchbar form {
   width: 100%;
   display: flex;
   justify-content: space-between;
