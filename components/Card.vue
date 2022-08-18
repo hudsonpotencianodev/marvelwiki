@@ -1,16 +1,18 @@
 <template>
   <b-card
+    v-b-modal.detail-modal
+    @click="click(id)"
     v-bind:class="{ comic: type == 'comic' }"
     :img-src="image"
     class="card mb-2"
   >
-    <b-card-text> {{ title }} </b-card-text>
+    <b-card-text>{{ title }}</b-card-text>
   </b-card>
 </template>
 
 <script>
 export default {
-  props: ["title", "image", "type"],
+  props: ["title", "image", "type", "click", "id", "openModal"],
 };
 </script>
 

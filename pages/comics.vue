@@ -83,7 +83,7 @@ export default {
       this.getComics();
     },
   },
-  mounted() {
+  beforeMount() {
     this.getComics();
   },
 };
