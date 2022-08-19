@@ -28,15 +28,10 @@ export default {
 .card img {
   object-position: center;
   object-fit: fill;
-  height: 200px;
-}
-.comic img {
-  height: 300px;
 }
 
 .card:hover {
   transform: scale(1.1);
-  box-shadow: 0 0px 20px 0px rgb(0 0 0 / 60%);
   cursor: pointer;
 }
 
@@ -54,7 +49,7 @@ export default {
     flex: 0 1 99%;
   }
 }
-@media (min-width: 400px) {
+@media (min-width: 768px) {
   .card {
     flex: 0 1 41%;
   }
@@ -62,15 +57,7 @@ export default {
     height: 240px;
   }
 }
-@media (min-width: 768px) {
-  .card {
-    flex: 0 1 28%;
-  }
-  .comic img {
-    height: 240px;
-  }
-}
-@media (min-width: 1000px) {
+@media (min-width: 992px) {
   .card {
     flex: 0 1 21%;
   }

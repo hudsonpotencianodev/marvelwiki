@@ -1,7 +1,7 @@
 <template>
   <b-row>
     <b-col lg="9" md="10" sm="12">
-      <b-modal id="detail-modal" :title="title" hide-footer>
+      <b-modal id="detail-modal" :title="title" title-class="detail-modal-title" hide-footer>
         <slot name="modal-content"></slot>
       </b-modal>
     </b-col>
@@ -15,8 +15,6 @@ export default {
 </script>
 <style lang="scss">
 .modal-content {
-  background: linear-gradient(to bottom, #ed213a, #93291e);
-  color: white;
 }
 .modal-title {
   font-weight: bold;
@@ -27,5 +25,9 @@ export default {
 }
 .modal-header {
   border-bottom: none;
+}
+.detail-modal-title {
+  font-size: 1.5rem;
+  line-height: 25px;
 }
 </style>

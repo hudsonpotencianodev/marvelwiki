@@ -3,6 +3,7 @@ import baseService from './base.service';
 
 export default {
     async getResourceURI(resourceURI) {
+        resourceURI = resourceURI.replace("http", "https");
         const key = resourceURI;
         const cache = localStorage.getItem(key);
         if (cache) {
@@ -20,7 +21,7 @@ export default {
                 result.image = `${result.thumbnail.path}.${result.thumbnail.extension}`
             }
 
-            result.name = result.name ? result.name : result.title;
+            result.name = result.name ? result.name : result.title ? result.title : result.fullName;
 
             localStorage.setItem(key, JSON.stringify(result));
 

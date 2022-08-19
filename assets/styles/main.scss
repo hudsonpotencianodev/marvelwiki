@@ -12,3 +12,16 @@
   overflow: auto;
   max-height: 100vh;
 }
+
+// :root {
+//   --primary-background: #ec1d24;
+// }
+
+// .btn-primary {
+//   background-color: var(--primary-background);
+// }
+
+.card,
+.card img {
+  border-radius: 0 !important;
+}

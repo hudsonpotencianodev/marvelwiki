@@ -1,5 +1,43 @@
 <template>
   <main class="container">
+    <DetailModal id="character-detail-modal" :title="detailComic.title">
+      <template #modal-content>
+        <b-row>
+          <b-col sm="6" lg="4">
+            <img
+              class="mb-4"
+              width="100%"
+              :src="detailComic.thumbnail?.path + '.'+ detailComic.thumbnail?.extension"
+              alt
+            />
+          </b-col>
+          <b-col lg="8" sm="12" md="12">
+            <h5 v-if="detailComic.description">{{detailComic.description}}</h5>
+          </b-col>
+        </b-row>
+
+        <b-row class="mt-4">
+          <b-col sm="12" lg="6" md="6">
+            <h2 class="font-weight-bold">Characters</h2>
+            <div v-if="detailComic.characters?.returned > 0">
+              <DetailCarolsel :slidesData="detailComic.characters?.items"></DetailCarolsel>
+            </div>
+            <div v-else style="height:200px;width:100%">
+              <h3>Empty</h3>
+            </div>
+          </b-col>
+          <b-col sm="12" lg="6" md="6">
+            <h2 class="font-weight-bold">Creators</h2>
+            <div v-if="detailComic.creators?.returned > 0">
+              <DetailCarolsel :slidesData="detailComic.creators?.items"></DetailCarolsel>
+            </div>
+            <div v-else style="height:200px;width:100%">
+              <h3>Empty</h3>
+            </div>
+          </b-col>
+        </b-row>
+      </template>
+    </DetailModal>
     <SearchBar
       :search="search"
       :sort="sort"
@@ -19,6 +57,8 @@
         :title="comic.title"
         :image="comic.thumbnail.path + '.' + comic.thumbnail.extension"
         :type="'comic'"
+        :click="openDetail"
+        :id="comic.id"
       />
     </CardLayout>
   </main>
@@ -32,6 +72,7 @@ export default {
   data() {
     return {
       comics: [],
+      detailComic: {},
       search: "",
       sort: "title",
       page: 0,
@@ -81,6 +122,10 @@ export default {
     backPage() {
       this.page--;
       this.getComics();
+    },
+    async openDetail(id) {
+      this.detailComic = {};
+      this.detailComic = await comicservice.getComic(id);
     },
   },
   beforeMount() {

@@ -3,7 +3,7 @@
     <DetailModal id="character-detail-modal" :title="detailCharacter.name">
       <template #modal-content>
         <b-row>
-          <b-col cols="3">
+          <b-col cols="4">
             <img
               class="mb-4"
               width="100%"
@@ -11,12 +11,12 @@
               alt
             />
           </b-col>
-          <b-col cols="9">
-            <h3 v-if="detailCharacter.description">{{detailCharacter.description}}</h3>
+          <b-col lg="8" sm="12" md="12">
+            <h5 v-if="detailCharacter.description">{{detailCharacter.description}}</h5>
           </b-col>
         </b-row>
 
-        <b-row>
+        <b-row class="mt-4">
           <b-col sm="12" lg="6" md="6">
             <h2 class="font-weight-bold">Comics</h2>
             <div v-if="detailCharacter.comics?.returned > 0">

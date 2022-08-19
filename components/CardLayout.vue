@@ -4,8 +4,8 @@
       <slot></slot>
     </div>
     <div class="page-buttons">
-      <button v-if="page > 0" @click="backPage">Back</button>
-      <button v-if="showNextButton" @click="nextPage">Next</button>
+      <b-button class="mr-1" variant="primary" v-if="page > 0" @click="backPage">Back</b-button>
+      <b-button variant="primary" v-if="showNextButton" @click="nextPage">Next</b-button>
     </div>
   </div>
 </template>

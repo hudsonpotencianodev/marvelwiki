@@ -1,13 +1,15 @@
 <template>
   <div class="searchbar">
     <form @submit.prevent="searchClick">
-      <input type="text" title="Search" placeholder="Search" v-model="search" />
-      <select title="Sort By" v-model="sort">
-        <option v-for="sort in sortList" :key="sort.value" :value="sort.value">
-          {{ sort.description }}
-        </option>
-      </select>
-      <button @click="searchClick">Search</button>
+      <b-form-input type="text" title="Search" placeholder="Search" v-model="search"></b-form-input>
+      <b-form-select title="Sort By" v-model="sort">
+        <option
+          v-for="sort in sortList"
+          :key="sort.value"
+          :value="sort.value"
+        >{{ sort.description }}</option>
+      </b-form-select>
+      <b-button variant="primary" @click="searchClick">Search</b-button>
     </form>
   </div>
 </template>

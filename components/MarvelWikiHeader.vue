@@ -21,3 +21,9 @@ export default {
   name: "MarvelWikiHeader",
 };
 </script>
+
+<style lang="scss">
+.nuxt-link-active {
+  font-weight: 700;
+}
+</style>

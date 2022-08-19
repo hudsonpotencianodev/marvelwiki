@@ -1,13 +1,13 @@
 <template>
   <b-carousel
     ref="myCarousel"
-    class="mycarousel"
+    class="mycarousel mb-2"
     v-model="slide"
     :interval="5000"
     controls
     draggable="true"
+    fade="true"
     indicators
-    value="-1"
     @sliding-start="onSlideStart"
     @sliding-end="onSlideEnd"
   >
@@ -16,10 +16,10 @@
         <b-img-lazy :src="slideData.detailData?.image"></b-img-lazy>
       </template>
       <template #default>
-        <h3
+        <h5
           @click="goToMarvelSite(slideData.detailData)"
           class="font-weight-bold click-link"
-        >{{slideData.detailData?.name}}</h3>
+        >{{slideData.detailData?.name}}</h5>
       </template>
     </b-carousel-slide>
   </b-carousel>
@@ -68,10 +68,8 @@ export default {
 
 <style lang="scss">
 .mycarousel {
-  margin-bottom: 30px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+  min-height: 100px;
   img {
-    min-height: 200px;
     height: auto;
     width: 100%;
     overflow: hidden;
