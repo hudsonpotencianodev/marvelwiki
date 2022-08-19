@@ -12,7 +12,7 @@
       @next-page="nextPage"
       @back-page="backPage"
     >
-      <LazyCard
+      <Card
         v-for="comic in comics"
         :key="comic.id"
         class="card"

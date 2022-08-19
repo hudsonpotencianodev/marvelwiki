@@ -54,7 +54,7 @@
       @next-page="nextPage"
       @back-page="backPage"
     >
-      <LazyCard
+      <Card
         v-for="serie in series"
         :key="serie.id"
         class="card"

@@ -7,6 +7,9 @@
           <NuxtLink to="/">Characters</NuxtLink>
         </b-nav-item>
         <b-nav-item>
+          <NuxtLink to="/game-news">Game News</NuxtLink>
+        </b-nav-item>
+        <b-nav-item>
           <NuxtLink to="/comics">Comics</NuxtLink>
         </b-nav-item>
         <b-nav-item>
