@@ -4,7 +4,12 @@
     <Nuxt />
   </main>
 </template>
-
+<script>
+export default {
+  name: "default",
+  middleware: "log",
+};
+</script>
 <style>
 html,
 body {
