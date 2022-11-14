@@ -16,7 +16,8 @@ export default {
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~assets/styles/main.scss'
+    '~assets/styles/main.scss',
+    '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -24,8 +25,11 @@ export default {
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
-
+  components: [
+    '~/components/atoms',
+    '~/components/molecules',
+    '~/components/organisms',
+  ],
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
   ],
@@ -39,7 +43,9 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
   ],
-
+  bootstrapVue: {
+    icons: true
+  },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308

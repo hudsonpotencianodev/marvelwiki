@@ -19,13 +19,15 @@
         <h5
           @click="goToMarvelSite(slideData.detailData)"
           class="font-weight-bold click-link"
-        >{{slideData.detailData?.name}}</h5>
+        >
+          {{ slideData.detailData?.name }}
+        </h5>
       </template>
     </b-carousel-slide>
   </b-carousel>
 </template>
 <script>
-import resourceuriservice from "../services/resourceURI.service";
+import resourceuriservice from "../../services/resourceURI.service";
 
 export default {
   name: "DetailCarolsel",

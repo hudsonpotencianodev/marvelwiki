@@ -7,12 +7,16 @@
             <img
               class="mb-4"
               width="100%"
-              :src="detailCharacter.thumbnail?.path + '.'+ detailCharacter.thumbnail?.extension"
+              :src="
+                detailCharacter.thumbnail?.path +
+                '.' +
+                detailCharacter.thumbnail?.extension
+              "
               alt
             />
           </b-col>
           <b-col lg="8" sm="12" md="12">
-            <h5 v-if="detailCharacter.description">{{detailCharacter.description}}</h5>
+            <h5 v-if="detailCharacter.description">{{ detailCharacter.description }}</h5>
           </b-col>
         </b-row>
 
@@ -20,18 +24,22 @@
           <b-col sm="12" lg="6" md="6">
             <h2 class="font-weight-bold">Comics</h2>
             <div v-if="detailCharacter.comics?.returned > 0">
-              <DetailCarolsel :slidesData="detailCharacter.comics?.items"></DetailCarolsel>
+              <DetailCarolsel
+                :slidesData="detailCharacter.comics?.items"
+              ></DetailCarolsel>
             </div>
-            <div v-else style="height:200px;width:100%">
+            <div v-else style="height: 200px; width: 100%">
               <h3>Empty</h3>
             </div>
           </b-col>
           <b-col sm="12" lg="6" md="6">
             <h2 class="font-weight-bold">Series</h2>
             <div v-if="detailCharacter.series?.returned > 0">
-              <DetailCarolsel :slidesData="detailCharacter.series?.items"></DetailCarolsel>
+              <DetailCarolsel
+                :slidesData="detailCharacter.series?.items"
+              ></DetailCarolsel>
             </div>
-            <div v-else style="height:200px;width:100%">
+            <div v-else style="height: 200px; width: 100%">
               <h3>Empty</h3>
             </div>
           </b-col>
@@ -96,16 +104,13 @@ export default {
   },
   methods: {
     getCharacters() {
-      characterservice
-        .getCharacters(
-          this.search,
-          this.sort,
-          this.limit,
-          this.page * this.limit
-        )
+      this.showNextButton = false;
+
+      return characterservice
+        .getCharacters(this.search, this.sort, this.limit, this.page * this.limit)
         .then((httpResult) => {
           const data = httpResult.data.data;
-          this.characters = data.results;
+          this.characters = this.characters.concat(data.results);
           this.showNextButton = data.count >= this.limit;
         });
     },
@@ -116,12 +121,15 @@ export default {
 
       this.search = paramSearch;
       this.sort = paramSort;
-
+      this.characters = [];
       this.getCharacters();
     },
-    nextPage() {
+    async nextPage() {
       this.page++;
-      this.getCharacters();
+      await this.getCharacters();
+      setTimeout(() => {
+        window.scrollTo({ top: window.scrollY + 500, behavior: "smooth" });
+      }, 500);
     },
     backPage() {
       this.page--;

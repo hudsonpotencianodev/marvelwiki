@@ -7,13 +7,13 @@
 <script>
 export default {
   name: "default",
-  middleware: "log",
 };
 </script>
 <style>
 html,
 body {
-  background-color: rgb(240, 240, 240);
+  background-color: var(--backgroud-theme);
+  color: var(--color-theme);
 }
 body {
   padding: 0 20px 20px 20px;

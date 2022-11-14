@@ -13,7 +13,7 @@
       @back-page="backPage"
     >
       <Card
-        v-for="comic in comics"
+        v-for="comic in stories"
         :key="comic.id"
         class="card"
         :title="comic.title"
@@ -31,7 +31,7 @@ export default {
   name: "comics",
   data() {
     return {
-      comics: [],
+      stories: [],
       search: "",
       sort: "title",
       page: 0,
@@ -55,36 +55,42 @@ export default {
     };
   },
   methods: {
-    getComics() {
-      seriesservice
+    getStories() {
+      this.showNextButton = false;
+
+      return seriesservice
         .getSeries(this.search, this.sort, this.limit, this.page * this.limit)
         .then((httpResult) => {
           const data = httpResult.data.data;
-          this.comics = data.results;
+          this.stories = this.stories.concat(data.results);
           this.showNextButton = data.count >= this.limit;
         });
     },
     searchChacaracters(paramSearch, paramSort) {
       if (paramSearch != this.search) {
         this.page = 0;
+      this.stories = [];
       }
 
       this.search = paramSearch;
       this.sort = paramSort;
 
-      this.getComics();
+      this.getStories();
     },
-    nextPage() {
+    async nextPage() {
       this.page++;
-      this.getComics();
+      await this.getStories();
+      setTimeout(() => {
+        window.scrollTo({ top: window.scrollY + 500, behavior: "smooth" });
+      }, 500);
     },
     backPage() {
       this.page--;
-      this.getComics();
+      this.getStories();
     },
   },
   beforeMount() {
-    this.getComics();
+    this.getStories();
   },
 };
 </script>

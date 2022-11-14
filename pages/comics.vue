@@ -7,12 +7,12 @@
             <img
               class="mb-4"
               width="100%"
-              :src="detailComic.thumbnail?.path + '.'+ detailComic.thumbnail?.extension"
+              :src="detailComic.thumbnail?.path + '.' + detailComic.thumbnail?.extension"
               alt
             />
           </b-col>
           <b-col lg="8" sm="12" md="12">
-            <h5 v-if="detailComic.description">{{detailComic.description}}</h5>
+            <h5 v-if="detailComic.description">{{ detailComic.description }}</h5>
           </b-col>
         </b-row>
 
@@ -20,9 +20,11 @@
           <b-col sm="12" lg="6" md="6">
             <h2 class="font-weight-bold">Characters</h2>
             <div v-if="detailComic.characters?.returned > 0">
-              <DetailCarolsel :slidesData="detailComic.characters?.items"></DetailCarolsel>
+              <DetailCarolsel
+                :slidesData="detailComic.characters?.items"
+              ></DetailCarolsel>
             </div>
-            <div v-else style="height:200px;width:100%">
+            <div v-else style="height: 200px; width: 100%">
               <h3>Empty</h3>
             </div>
           </b-col>
@@ -31,7 +33,7 @@
             <div v-if="detailComic.creators?.returned > 0">
               <DetailCarolsel :slidesData="detailComic.creators?.items"></DetailCarolsel>
             </div>
-            <div v-else style="height:200px;width:100%">
+            <div v-else style="height: 200px; width: 100%">
               <h3>Empty</h3>
             </div>
           </b-col>
@@ -97,17 +99,20 @@ export default {
   },
   methods: {
     getComics() {
-      comicservice
+      this.showNextButton = false;
+
+      return comicservice
         .getComics(this.search, this.sort, this.limit, this.page * this.limit)
         .then((httpResult) => {
           const data = httpResult.data.data;
-          this.comics = data.results;
+          this.comics = this.comics.concat(data.results);
           this.showNextButton = data.count >= this.limit;
         });
     },
     searchChacaracters(paramSearch, paramSort) {
       if (paramSearch != this.search) {
         this.page = 0;
+        this.comics = [];
       }
 
       this.search = paramSearch;
@@ -115,9 +120,12 @@ export default {
 
       this.getComics();
     },
-    nextPage() {
+    async nextPage() {
       this.page++;
-      this.getComics();
+      await this.getComics();
+      setTimeout(() => {
+        window.scrollTo({ top: window.scrollY + 500, behavior: "smooth" });
+      }, 500);
     },
     backPage() {
       this.page--;

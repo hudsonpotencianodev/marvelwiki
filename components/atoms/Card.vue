@@ -38,10 +38,12 @@ export default {
 .card-text {
   font-weight: 600;
   font-size: 0.9rem;
+  color: var(--color-theme);
 }
 
 .card-body {
   padding: 0.5rem;
+  background-color: var(--card-body-theme);
 }
 
 @media (min-width: 0px) {

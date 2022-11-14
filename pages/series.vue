@@ -7,12 +7,12 @@
             <img
               class="mb-4"
               width="100%"
-              :src="serieDetail.thumbnail?.path + '.'+ serieDetail.thumbnail?.extension"
+              :src="serieDetail.thumbnail?.path + '.' + serieDetail.thumbnail?.extension"
               alt
             />
           </b-col>
           <b-col lg="8" sm="12" md="12">
-            <h5 v-if="serieDetail.description">{{serieDetail.description}}</h5>
+            <h5 v-if="serieDetail.description">{{ serieDetail.description }}</h5>
           </b-col>
         </b-row>
 
@@ -20,9 +20,11 @@
           <b-col sm="12" lg="6" md="6">
             <h4 class="font-weight-bold">Characters</h4>
             <div v-if="serieDetail.characters?.returned > 0">
-              <DetailCarolsel :slidesData="serieDetail.characters?.items"></DetailCarolsel>
+              <DetailCarolsel
+                :slidesData="serieDetail.characters?.items"
+              ></DetailCarolsel>
             </div>
-            <div v-else style="height:200px;width:100%">
+            <div v-else style="height: 200px; width: 100%">
               <h5>Empty</h5>
             </div>
           </b-col>
@@ -31,7 +33,7 @@
             <div v-if="serieDetail.comics?.returned > 0">
               <DetailCarolsel :slidesData="serieDetail.comics?.items"></DetailCarolsel>
             </div>
-            <div v-else style="height:200px;width:100%">
+            <div v-else style="height: 200px; width: 100%">
               <h5>Empty</h5>
             </div>
           </b-col>
@@ -40,14 +42,19 @@
             <div v-if="serieDetail.creators?.returned > 0">
               <DetailCarolsel :slidesData="serieDetail.creators?.items"></DetailCarolsel>
             </div>
-            <div v-else style="height:200px;width:100%">
+            <div v-else style="height: 200px; width: 100%">
               <h5>Empty</h5>
             </div>
           </b-col>
         </b-row>
       </template>
     </DetailModal>
-    <SearchBar :search="search" :sort="sort" :sort-list="sortList" @search-click="searchSeries" />
+    <SearchBar
+      :search="search"
+      :sort="sort"
+      :sort-list="sortList"
+      @search-click="searchSeries"
+    />
     <CardLayout
       :show-next-button="showNextButton"
       :page="page"
@@ -101,17 +108,22 @@ export default {
   },
   methods: {
     getSeries() {
-      seriesservice
+
+      this.showNextButton = false;
+      
+      return seriesservice
         .getSeries(this.search, this.sort, this.limit, this.page * this.limit)
         .then((httpResult) => {
           const data = httpResult.data.data;
-          this.series = data.results;
+          this.series = this.series.concat(data.results);
           this.showNextButton = data.count >= this.limit;
         });
     },
     searchSeries(paramSearch, paramSort) {
       if (paramSearch != this.search) {
         this.page = 0;
+      this.series = [];
+
       }
 
       this.search = paramSearch;
@@ -119,9 +131,13 @@ export default {
 
       this.getSeries();
     },
-    nextPage() {
+    async nextPage() {
       this.page++;
-      this.getSeries();
+      await this.getSeries();
+
+      setTimeout(() => {
+        window.scrollTo({ top: window.scrollY + 500, behavior: "smooth" });
+      }, 500);
     },
     backPage() {
       this.page--;
