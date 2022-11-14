@@ -7,8 +7,9 @@
       <!-- <b-button class="mr-1" variant="primary" v-if="page > 0" @click="backPage"
         >Back</b-button
       > -->
-      <b-button variant="primary" v-if="showNextButton" @click="nextPage"
-        >Ver mais</b-button
+      <b-button class="vermais-button" v-if="showNextButton" @click="nextPage">
+        <font-awesome-icon icon="fa-solid fa-chevron-down" />
+        Ver mais</b-button
       >
     </div>
   </div>
@@ -29,9 +30,10 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss">
 .cards {
-  margin: 20px 0px;
+  margin: 30px 0px;
+  padding: 0 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -39,5 +41,8 @@ export default {
 .page-buttons {
   display: flex;
   justify-content: center;
+  .btn {
+    background-color: var(--background-red-theme);
+  }
 }
 </style>

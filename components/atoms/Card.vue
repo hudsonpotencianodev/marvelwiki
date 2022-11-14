@@ -2,11 +2,18 @@
   <b-card
     v-b-modal.detail-modal
     @click="click(id)"
-    v-bind:class="{ comic: type == 'comic' }"
-    :img-src="image"
+    v-bind:class="{
+      comic: type == 'comic',
+      gamenews: type == 'game-news',
+      characters: type == 'characters',
+      series: type == 'series',
+    }"
     class="card mb-2"
   >
-    <b-card-text>{{ title }}</b-card-text>
+    <b-card-img :src="image" alt="Image"></b-card-img>
+    <div class="card-title">
+      {{ title }}
+    </div>
   </b-card>
 </template>
 
@@ -16,18 +23,34 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .card {
   flex: 0 1 22%;
   border: none;
-  box-shadow: 0 26px 24px -16px rgb(0 0 0 / 40%);
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   margin: 30px 15px;
   transition: transform 0.5s;
+  position: relative;
+  background-color: var(--card-body-theme);
+}
+
+.card-title {
+  position: absolute;
+  font-weight: 600;
+  font-size: 1.3rem;
+  padding-left: 5px;
+  top: 0;
+  width: 100%;
+  height: auto;
+  color: var(--color-theme);
+  background-color: rgba(0, 0, 0, 0.349);
 }
 
 .card img {
   object-position: center;
-  object-fit: fill;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .card:hover {
@@ -35,15 +58,8 @@ export default {
   cursor: pointer;
 }
 
-.card-text {
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--color-theme);
-}
-
 .card-body {
-  padding: 0.5rem;
-  background-color: var(--card-body-theme);
+  padding: 0;
 }
 
 @media (min-width: 0px) {
@@ -58,6 +74,9 @@ export default {
   .comic img {
     height: 240px;
   }
+  .card-title {
+    display: block;
+  }
 }
 @media (min-width: 992px) {
   .card {
@@ -68,8 +87,28 @@ export default {
   .card {
     flex: 0 1 21%;
   }
-  .comic img {
-    height: 300px;
+  .card-title {
+    display: none;
+    height: 100%;
+    background-color: transparent;
   }
+  .card:hover {
+    .card-title {
+      transition: all 0.5s ease-in;
+      background-color: rgba(0, 0, 0, 0.349);
+      display: block;
+    }
+  }
+}
+.characters img {
+  min-height: 247px;
+}
+.comic img {
+  min-height: 345px;
+  height: auto;
+}
+.series img {
+  min-height: 247px;
+  object-fit: fill;
 }
 </style>

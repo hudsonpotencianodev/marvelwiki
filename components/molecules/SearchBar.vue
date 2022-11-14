@@ -1,15 +1,18 @@
 <template>
   <div class="searchbar">
     <form @submit.prevent="searchClick">
-      <b-form-input type="text" title="Search" placeholder="Search" v-model="search"></b-form-input>
+      <b-form-input
+        type="text"
+        title="Search"
+        placeholder="Search"
+        v-model="search"
+      ></b-form-input>
       <b-form-select title="Sort By" v-model="sort">
-        <option
-          v-for="sort in sortList"
-          :key="sort.value"
-          :value="sort.value"
-        >{{ sort.description }}</option>
+        <option v-for="sort in sortList" :key="sort.value" :value="sort.value">
+          {{ sort.description }}
+        </option>
       </b-form-select>
-      <b-button variant="primary" @click="searchClick">Search</b-button>
+      <b-button @click="searchClick">Search</b-button>
     </form>
   </div>
 </template>
@@ -40,6 +43,7 @@ export default {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  padding: 0px 18px;
 }
 
 input,
@@ -58,5 +62,6 @@ select {
 
 button {
   flex: 0 1 10%;
+  background-color: var(--background-red-theme);
 }
 </style>

@@ -67,7 +67,7 @@
         class="card"
         :title="serie.title"
         :image="serie.thumbnail.path + '.' + serie.thumbnail.extension"
-        :type="'comic'"
+        :type="'series'"
         :click="openDetail"
         :id="serie.id"
       />
@@ -108,9 +108,8 @@ export default {
   },
   methods: {
     getSeries() {
-
       this.showNextButton = false;
-      
+
       return seriesservice
         .getSeries(this.search, this.sort, this.limit, this.page * this.limit)
         .then((httpResult) => {
@@ -122,8 +121,7 @@ export default {
     searchSeries(paramSearch, paramSort) {
       if (paramSearch != this.search) {
         this.page = 0;
-      this.series = [];
-
+        this.series = [];
       }
 
       this.search = paramSearch;

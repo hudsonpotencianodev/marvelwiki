@@ -66,6 +66,7 @@
         :image="character.thumbnail.path + '.' + character.thumbnail.extension"
         :click="openDetail"
         :id="character.id"
+        :type="'characters'"
       />
     </CardLayout>
   </main>

@@ -12,11 +12,12 @@
       @next-page="nextPage"
       @back-page="backPage"
     >
-      <Card
+      <NewsCard
         v-for="game in gameNews"
         :key="game.link.link"
         class="card"
         :title="game.headline"
+        :type="'game-news'"
         :image="
           'https://terrigen-cdn-dev.marvel.com/content/prod/1x/' + game.image.filename
         "
@@ -28,7 +29,7 @@
 </template>
 
 <script>
-import { throwStatement } from "@babel/types";
+import NewsCard from "../components/atoms/NewsCard.vue";
 import gameservice from "../services/games.service";
 
 export default {
@@ -61,7 +62,6 @@ export default {
   methods: {
     getGameNews() {
       this.showNextButton = false;
-
       return gameservice
         .getGameNews(this.search, this.sort, this.limit, this.page * this.limit)
         .then((result) => {
@@ -74,7 +74,6 @@ export default {
         this.page = 0;
         this.gameNews = [];
       }
-
       this.search = paramSearch;
       this.sort = paramSort;
       this.getGameNews();
@@ -103,5 +102,7 @@ export default {
   created() {
     this.getGameNews();
   },
+  components: { NewsCard },
 };
 </script>
+<style></style>
