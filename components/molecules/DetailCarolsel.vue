@@ -16,10 +16,7 @@
         <b-img-lazy :src="slideData.detailData?.image"></b-img-lazy>
       </template>
       <template #default>
-        <h5
-          @click="goToMarvelSite(slideData.detailData)"
-          class="font-weight-bold click-link"
-        >
+        <h5 @click="goToMarvelSite(slideData.detailData)" class="click-link">
           {{ slideData.detailData?.name }}
         </h5>
       </template>

@@ -12,7 +12,11 @@
             />
           </b-col>
           <b-col lg="8" sm="12" md="12">
+            <a :href="detailComic.urls ? detailComic.urls[0].url : ''" target="_blank">
+              <font-awesome-icon icon="fa-solid fa-arrow-up-right-from-square" />
+            </a>
             <h5 v-if="detailComic.description">{{ detailComic.description }}</h5>
+            <h5 v-else>Empty</h5>
           </b-col>
         </b-row>
 

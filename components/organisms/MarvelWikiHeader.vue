@@ -4,25 +4,25 @@
       <b-navbar>
         <b-navbar-nav>
           <b-nav-item>
-            <NuxtLink :to="{ name: 'index' }" class="card-nav-item">
+            <NuxtLink prefetch :to="{ name: 'index' }" class="card-nav-item">
               <font-awesome-icon class="icon" icon="fa-solid fa-id-badge" />
             </NuxtLink>
           </b-nav-item>
           <b-nav-item>
-            <NuxtLink to="/comics" class="card-nav-item">
+            <NuxtLink prefetch to="/comics" class="card-nav-item">
               <font-awesome-icon class="icon" icon="fa-solid fa-book-open" />
             </NuxtLink>
           </b-nav-item>
           <b-nav-item>
-            <NuxtLink to="/series" class="card-nav-item">
+            <NuxtLink prefetch to="/series" class="card-nav-item">
               <font-awesome-icon class="icon" icon="fa-solid fa-video" />
             </NuxtLink>
           </b-nav-item>
-          <b-nav-item>
+          <!-- <b-nav-item>
             <NuxtLink to="/game-news" class="card-nav-item">
               <font-awesome-icon class="icon" icon="fa-solid fa-newspaper" />
             </NuxtLink>
-          </b-nav-item>
+          </b-nav-item> -->
           <!-- <b-nav-item class="global-flex-vertical" v-b-modal.config-modal>
     
             <div class="config-button" v-b-modal.config-modal>
@@ -99,6 +99,7 @@ export default {
       if (this.theme == "dark") {
         root.style.setProperty("--backgroud-theme", "#2a2a2a");
         root.style.setProperty("--color-theme", "#fff");
+        root.style.setProperty("--color-2-theme", "#fff");
         root.style.setProperty("--card-body-theme", "#505050");
         root.style.setProperty("--card-background-theme", "#000");
 
@@ -106,6 +107,7 @@ export default {
       } else {
         root.style.setProperty("--backgroud-theme", "#f5f5f5");
         root.style.setProperty("--color-theme", "#000");
+        root.style.setProperty("--color-2-theme", "#fff");
         root.style.setProperty("--card-body-theme", "#fff");
         root.style.setProperty("--card-background-theme", "#F9F9F9");
         localStorage.setItem("theme", this.theme);
@@ -113,7 +115,7 @@ export default {
     },
   },
   mounted() {
-    this.theme = localStorage.getItem("theme") ?? "light";
+    this.theme = localStorage.getItem("theme") ?? "dark";
     this.pageTitle = pages.index.title;
     this.updateTheme();
   },
@@ -123,12 +125,13 @@ export default {
 <style lang="scss">
 .page-title {
   text-align: center;
+  font-size: 2.5rem;
   margin: 20px 0 30px 0;
 }
 
 .card-nav-item {
-  height: 60px;
-  width: 60px;
+  height: 50px;
+  width: 50px;
   display: flex;
   justify-items: center;
   flex-direction: column;
@@ -146,7 +149,6 @@ export default {
   text-decoration: none;
 }
 .nuxt-link-exact-active {
-  font-weight: 700;
   background-color: var(--background-red-theme);
   transition: all 0.4s ease-in;
   span {
@@ -165,8 +167,8 @@ export default {
 }
 @media (min-width: 992px) {
   .card-nav-item {
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
     .icon {
       font-size: 48px;
     }

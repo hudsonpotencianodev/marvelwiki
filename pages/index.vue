@@ -16,31 +16,32 @@
             />
           </b-col>
           <b-col lg="8" sm="12" md="12">
+            <a
+              :href="detailCharacter.urls ? detailCharacter.urls[0].url : ''"
+              target="_blank"
+            >
+              <font-awesome-icon icon="fa-solid fa-arrow-up-right-from-square" />
+            </a>
             <h5 v-if="detailCharacter.description">{{ detailCharacter.description }}</h5>
+            <h5 v-else>Empty</h5>
           </b-col>
         </b-row>
 
         <b-row class="mt-4">
-          <b-col sm="12" lg="6" md="6">
+          <b-col sm="12" lg="6" md="6" v-if="detailCharacter.comics?.returned > 0">
             <h2 class="font-weight-bold">Comics</h2>
-            <div v-if="detailCharacter.comics?.returned > 0">
+            <div>
               <DetailCarolsel
                 :slidesData="detailCharacter.comics?.items"
               ></DetailCarolsel>
             </div>
-            <div v-else style="height: 200px; width: 100%">
-              <h3>Empty</h3>
-            </div>
           </b-col>
-          <b-col sm="12" lg="6" md="6">
+          <b-col sm="12" lg="6" md="6" v-if="detailCharacter.series?.returned > 0">
             <h2 class="font-weight-bold">Series</h2>
-            <div v-if="detailCharacter.series?.returned > 0">
+            <div>
               <DetailCarolsel
                 :slidesData="detailCharacter.series?.items"
               ></DetailCarolsel>
-            </div>
-            <div v-else style="height: 200px; width: 100%">
-              <h3>Empty</h3>
             </div>
           </b-col>
         </b-row>

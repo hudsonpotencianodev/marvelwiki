@@ -1,7 +1,12 @@
 <template>
   <b-row>
     <b-col lg="9" md="10" sm="12">
-      <b-modal id="detail-modal" :title="title" title-class="detail-modal-title" hide-footer>
+      <b-modal
+        id="detail-modal"
+        :title="title"
+        title-class="detail-modal-title"
+        hide-footer
+      >
         <slot name="modal-content"></slot>
       </b-modal>
     </b-col>
@@ -15,9 +20,10 @@ export default {
 </script>
 <style lang="scss">
 .modal-content {
+  background-color: var(--backgroud-theme);
 }
 .modal-title {
-  font-weight: bold;
+  font-weight: 500;
   font-size: 1.8rem;
 }
 .modal-dialog {
@@ -29,5 +35,18 @@ export default {
 .detail-modal-title {
   font-size: 1.5rem;
   line-height: 25px;
+}
+.close {
+  color: var(--background-red-theme);
+  font-size: 30px;
+  text-shadow: none;
+  opacity: 1;
+}
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  background-color: var(--background-red-theme);
+  border-radius: 30px;
+  background-size: 14px;
+  opacity: 1;
 }
 </style>

@@ -1,6 +1,7 @@
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
+  target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'marvelwiki',
@@ -24,7 +25,7 @@ export default {
   plugins: [
     '~/plugins/fontawesome.js'
   ],
-
+  telemetry: false,
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [
     '~/components/atoms',
@@ -44,9 +45,6 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
   ],
-  bootstrapVue: {
-    icons: true
-  },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308

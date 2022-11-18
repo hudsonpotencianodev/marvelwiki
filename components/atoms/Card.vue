@@ -36,13 +36,13 @@ export default {
 
 .card-title {
   position: absolute;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1.3rem;
   padding-left: 5px;
   top: 0;
   width: 100%;
   height: auto;
-  color: var(--color-theme);
+  color: var(--color-2-theme);
   background-color: rgba(0, 0, 0, 0.349);
 }
 

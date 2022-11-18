@@ -1,18 +1,18 @@
-.global-flex-vertical {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 
 :root {
   --backgroud-theme: #2a2a2a;
   --color-theme: #fff;
+  --color-2-theme: #000;
   --card-body-theme: #505050;
   --card-background-theme: "#000";
-  --background-red-theme: "#ed1d24";
-  --primary: "#ed1d24";
-  --secondary: "#ed1d24";
-  --dark: "#ed1d24";
+  --background-red-theme: #ed1d24;
+}
+
+body {
+  font-family: 'Bebas Neue', cursive;
+
 }
 
 .fade-enter-active,
@@ -41,4 +41,10 @@
 .card,
 .card img {
   border-radius: 0 !important;
+}
+
+.global-flex-vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

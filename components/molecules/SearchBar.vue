@@ -39,11 +39,16 @@ export default {
 </script>
 
 <style scoped>
-.searchbar form {
-  width: 100%;
+.searchbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  width: 100%;
+}
+.searchbar form {
+  width: 50%;
   padding: 0px 18px;
+  display: flex;
+  flex-direction: row;
 }
 
 input,
@@ -62,6 +67,5 @@ select {
 
 button {
   flex: 0 1 10%;
-  background-color: var(--background-red-theme);
 }
 </style>
