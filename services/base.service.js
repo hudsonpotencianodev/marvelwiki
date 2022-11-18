@@ -16,10 +16,3 @@ export default {
     },
 
 }
-//filtros
-// ano
-// comics
-// stories
-// creators
-// characters
-// seriesType

@@ -1,6 +1,6 @@
 # Marvelwiki
 
-**Um catálogo de personagens, quadrinhos e series utilizando a Marvel API**
+**Um catálogo de personagens, quadrinhos e series usando a Marvel API**
 
 [https://marvelwiki.web.app/](https://marvelwiki.web.app/)
 
@@ -10,7 +10,7 @@
 - Nuxt
 - PWA
 - Bootstrap
-- Fortawesome
+- Font Awesome
 
 ## Build Setup
 
