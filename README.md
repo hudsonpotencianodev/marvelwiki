@@ -1,4 +1,6 @@
-# marvelwiki
+# Marvelwiki
+
+**Um catálogo de personagens, quadrinhos e series utilizando a Marvel API**
 
 [https://marvelwiki.web.app/](https://marvelwiki.web.app/)
 
